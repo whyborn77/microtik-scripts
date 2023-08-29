@@ -25,5 +25,5 @@ if ([:len [/system identity get name]] = 0 or [/system identity get name] = "Mik
     $SendTelegramMessage MessageText=$MessageText;
     #END Send Telegram Module
 
-:log info "External IP address has changed";
+:log warning ("$SMP External IP address has changed.");
 };
