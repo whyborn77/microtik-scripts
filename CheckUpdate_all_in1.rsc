@@ -1,4 +1,4 @@
-# Name: CheckUpdateSimple v711-2.1
+# Name: CheckUpdate_all_in1 v711-2
 # Description: Optimized the code for the current version of RouterOS. Check for RouterOS update and send notification to telegram. 
 # Author: Whyborn77  2023
 # License: GPL-3.0 License
