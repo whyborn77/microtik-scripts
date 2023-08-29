@@ -16,7 +16,7 @@
 :local StatusWan [/ping $WanGW interface=$InF count=$PingCount]
 :if ($StatusWan<=0) do={
 
-    :local MessageText "%F0%9F%94%B4ISP1 is <b>DOWN</b> %0D%0A<tg-spoiler>cheked ISP gateway IPv4 is $WanGW</tg-spoiler>";
+    :local MessageText "%F0%9F%94%B4ISP1 is <b>DOWN</b> %0D%0AChecked ISP gateway IPv4 is <tg-spoiler>$WanGW</tg-spoiler>";
 
     # START Send Telegram Module
     :local SendTelegramMessage [:parse [/system script  get MyTGBotSendMessage source]]; 
