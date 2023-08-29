@@ -1,0 +1,29 @@
+# Name: CheckChangeExternalAdress v711.1
+# Description: Optimized the code for the current version of RouterOS. Check ISP1 and send notification to telegram in ISP GW is down 
+# Link: need script function "MyTGBotSendMessage"
+# Author: Whyborn77 2023
+# License: GPL-3.0 License
+# URL: https://github.com/whyborn77/microtik-scripts
+
+:global CurrentIP;
+:local NewIP ([/tool fetch url=http://api.ipify.org/ as-value output=user] -> "data")
+
+:if ($NewIP != $CurrentIP) do={
+    :local Time [/system clock get time];
+    :local Date [/system clock get date];
+    :local DeviceName [/system identity get name];
+    :local MessageText " %E2%9A%A0%EF%B8%8F<b>$DeviceName: External IP address has <b>changed</b>.%0D%0A</b>%F0%9F%86%95IP: $NewIP, Previous IP: $CurrentIP";
+    :set CurrentIP $NewIP;
+
+    #Check if proper identity name is set
+if ([:len [/system identity get name]] = 0 or [/system identity get name] = "MikroTik") do={
+    :log warning ("$SMP Please set identity name of your device (System -> Identity), keep it short and informative.");
+};
+
+    #START Send Telegram Module
+    :local SendTelegramMessage [:parse [/system script  get MyTGBotSendMessage source]]; 
+    $SendTelegramMessage MessageText=$MessageText;
+    #END Send Telegram Module
+
+:log info "External IP address has changed";
+};
