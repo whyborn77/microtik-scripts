@@ -1,6 +1,6 @@
-# Name: CheckUpdateSimple v7.11-1
+# Name: CheckUpdateSimple v711.2
 # Description: Optimized the code for the current version of RouterOS. Check for RouterOS update (simple, not functions)  and send notification. 
-# Link:  need script function "MyTGBotSendMessage"
+# Link: Need script function "MyTGBotSendMessage"
 # Author: Whyborn77  2023
 # License: GPL-3.0 License
 # URL: https://github.com/whyborn77/microtik-scripts
@@ -20,14 +20,13 @@ if ([:len [/system identity get name]] = 0 or [/system identity get name] = "Mik
 :log info "Script CheckUpdateSimple - Run.";
 
 
-:if ($InstalledVersion = $LatestVersion) do={
+:if ($InstalledVersion != $LatestVersion) do={
 
-    :local TelegramMessageText "%F0%9F%86%95 MikroTik RouterOS new version <u>$LatestVersion</u> is available! %0D%0AInstalled version <b>$InstalledVersion</b> $Channel.%0D%0A<a href=\"https://mikrotik.com/download/changelogs\">Changelogs</a>";
+    :local MessageText "%F0%9F%86%99$DevName: MikroTik RouterOS %F0%9F%86%95 version <u>$LatestVersion</u> is available! %0D%0AInstalled version <b>$InstalledVersion</b> $Channel.%0D%0A<a href=\"https://mikrotik.com/download/changelogs\">Changelogs</a>";
 
     :log info "Script CheckUpdateSimple - New version is available, send notify.";
 
     # START Send Telegram Module
-    :local MessageText "%F0%9F%86%99$DevName: $TelegramMessageText";
     :local SendTelegramMessage [:parse [/system script  get MyTGBotSendMessage source]]; 
     $SendTelegramMessage MessageText=$MessageText;
     #END Send Telegram Module
