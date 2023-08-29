@@ -8,7 +8,7 @@
 if ([:len [/system identity get name]] = 0 or [/system identity get name] = "MikroTik") do={
     :log warning ("$SMP Please set identity name of your device (System -> Identity), keep it short and informative.");
 };
-:local MessageText "%E2%84%B9%EF%B8%8F$DevName is going to rebootю, <b>keep calm and drink some coffees</b>";
+:local MessageText "%E2%9A%A0%EF%B8%8F$DevName is going to <b>reboot</b>.%0D%0A<i>Keep calm and drink some coffees</i>";
 :log info "Script wanna2reboot - prepare to reboot, send notify to telegram.";
     #START Send Telegram Module
     :local SendTelegramMessage [:parse [/system script  get MyTGBotSendMessage source]]; 
