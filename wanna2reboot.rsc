@@ -3,7 +3,7 @@
 # License: GPL-3.0 License
 # URL: https://github.com/whyborn77/microtik-scripts
 
-:local DeviceName [/system identity get name];
+:local DevName [/system identity get name];
 #Check if proper identity name is set
 if ([:len [/system identity get name]] = 0 or [/system identity get name] = "MikroTik") do={
     :log warning ("$SMP Please set identity name of your device (System -> Identity), keep it short and informative.");
