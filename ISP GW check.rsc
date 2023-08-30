@@ -24,5 +24,5 @@
     $SendTelegramMessage MessageText=$MessageText;
     #END Send Telegram Module
 
-:log warning ("$SMP ISP1 is down.");
+:log warning ("$SMP $InF is down.");
 }
