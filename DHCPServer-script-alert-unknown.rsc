@@ -12,7 +12,7 @@ if ([:len [/system identity get name]] = 0 or [/system identity get name] = "Mik
 
 :local MessageText "%E2%9A%A0%EF%B8%8F$DevName - DHCP Alert: Discovered%0D%0A<b>unknown</b> dhcp server $address $"portname" $"mac-address" $interface ";
 
-/tool e-mail send to=report@miassmobili.com subject=("DHCP Alert: Discovered unknown dhcp server") body=("MikroTik have been detected unknown dhcp-server: \n\n$address  $portname \n$interface \n$"mac-address" "\n.[/system identity get name] );
+/tool e-mail send to=<SET EMAIL HERE> subject=("DHCP Alert: Discovered unknown dhcp server") body=("MikroTik have been detected unknown dhcp-server: \n\n$address  $portname \n$interface \n$"mac-address" "\n.[/system identity get name] );
 
 ;log warning "e-mail send unknown dhcp-server"
 
