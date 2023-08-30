@@ -4,8 +4,9 @@
 # Author: Whyborn77 2023
 # License: GPL-3.0 License
 # URL: https://github.com/whyborn77/microtik-scripts
+# Permissions: [System] -> [Scripts] -> [+] -> [Name:ISP GW check] -> [Policy: read, write, policy, test]
 
-:log info "check ISP1 GW";
+
 # Constants
 :local PingCount 5
 # RemoteIP
@@ -16,7 +17,7 @@
 :local StatusWan [/ping $WanGW interface=$InF count=$PingCount]
 :if ($StatusWan<=0) do={
 
-    :local MessageText "%F0%9F%94%B4ISP1 is <b>DOWN</b> %0D%0AChecked ISP gateway IPv4 is <tg-spoiler>$WanGW</tg-spoiler>";
+    :local MessageText "%F0%9F%94%B4 $InF is <b>DOWN</b> %0D%0AChecked ISP gateway IPv4 is <tg-spoiler>$WanGW</tg-spoiler>";
 
     # START Send Telegram Module
     :local SendTelegramMessage [:parse [/system script  get MyTGBotSendMessage source]]; 
