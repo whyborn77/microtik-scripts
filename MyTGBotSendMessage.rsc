@@ -4,6 +4,8 @@
 # License: GPL-3.0 License
 # URL: https://github.com/whyborn77/microtik-scripts
 # Original author: Yun Sergey https://mhelp.pro/mikrotik-scripts-check-routeros-update/
+# Permissions: [System] -> [Scripts] -> [+] -> [Name: MyTGBotSendMessage] -> [Don't Require Permissions]
+
 
 :local BotToken "<PLACE HERE BOT ID >";
 :local ChatID "<PLACE HERE CHAT OR GROUP ID TO REPORT>";
