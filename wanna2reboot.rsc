@@ -1,5 +1,5 @@
-# Name: wanna2reboot v711.3
-# Author: Whyborn77 2023
+# Name: wanna2reboot v711.4
+# Author: Whyborn77 2024
 # License: GPL-3.0 License
 # URL: https://github.com/whyborn77/microtik-scripts
 
@@ -14,6 +14,8 @@ if ([:len [/system identity get name]] = 0 or [/system identity get name] = "Mik
     :local SendTelegramMessage [:parse [/system script  get MyTGBotSendMessage source]]; 
     $SendTelegramMessage MessageText=$MessageText;
     #END Send Telegram Module
-:delay 7s
+:delay 30s
 :log warning ("$SMP Script "wanna2reboot" - system is expected to reboot.");
+:if ([ /system/resource/get uptime ] > 2w0d0h0m0s) do={
 /system reboot
+}
