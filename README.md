@@ -1,5 +1,5 @@
 # microtik-scripts
-моя скромная попытка в код lua под routeros
+моя скромная попытка в код routeros
 
 
 
